@@ -1,0 +1,156 @@
+html, body {
+    height: 100%;
+}
+body{
+    background-color: #f9f9f9;
+    font-family: 'Inter', sans-serif;
+    line-height: 28px;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: normal;
+    color:grey;
+}
+.algn-center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.signin-option a {
+    padding: 9px 15px;
+    background-color: #e8eaee;
+    border-radius: 3px;
+    text-decoration: none;
+    color: #212529;
+}
+
+.signin-option a:hover {
+    text-decoration: none;
+    color: #59b828;
+}
+.signin-option .fa-user{
+    margin-right: 7px;;
+}
+.my-cart a{
+    color: #00cc76;
+}
+.site-action li{
+    list-style-type: none;
+    margin: 0 15px;
+}
+
+@media (min-width: 576px){
+    .modal-dialog {
+      max-width: 400px;
+      
+      .modal-content {
+        padding: 1rem;
+      }
+    }
+  }
+  
+  .modal-header {
+    .close {
+      margin-top: -1.5rem;
+    }
+  }
+  
+  .form-title {
+    margin: -2rem 0rem 2rem;
+  }
+  
+  .btn-round {
+    border-radius: 3rem;
+  }
+  
+  .delimiter {
+    padding: 1rem;  
+  }
+  
+  .social-buttons {
+    .btn {
+      margin: 0 0.5rem 1rem;
+    }
+  }
+  
+  .signup-section {
+    padding: 0.3rem 0rem;
+  }
+
+  .nav-link:hover{
+    color: #00cc76 !important;
+  }
+/*............................................. banner section ...............................................*/
+.banner-bg{
+    height: 520px;
+    width: 100%;
+    /* background-image: url('../img/banner2.png'); */
+    /* background-position: center center; */
+}
+
+.banner-content h6{
+    font-weight: normal;
+    font-size: 18px;
+}
+.banner-content h2{
+    font-size: 42px;
+    font-weight: 700;
+    color: #222533;
+    line-height: 1.1;
+    margin-bottom: 25px;
+    font-family: 'Inter', sans-serif;
+}
+.banner-content .banner-btn{
+    font-size: 13px;
+    font-weight: 700;
+    color: white;
+    background-color: #00cc76;
+    padding: 15px 25px;
+    border-radius: 3px;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: 0.25s ease-out;
+}
+
+.banner-content .banner-btn:hover{
+    background-color: #fff;
+    color: #00cc76;  
+}
+/*............................................. info box section ...............................................*/
+.info-box-section{
+    padding-top: 60px;
+    padding-bottom: 60px;
+}
+
+.info-process-box{
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 15px;
+    border-radius: 5px;
+    position: relative;
+    box-shadow: 2px 2px 2px 0px rgb(0 0 0 / 10%);
+}
+
+.info-process-box:hover{
+    border-bottom: 3px solid #00cc76;
+}
+
+.info-process-box .info-icon {
+    display: inline-block;
+    width: 100px;
+    margin-bottom: 10px;
+}
+.info-icon img{
+    width: 50px;
+    height: 40px;
+}
+
+.info-content{
+    padding-left: 20px;
+}
+
+.info-content h6{
+    font-size: 18px;
+    font-weight: 500;
+    color: #222533;
+    margin-bottom: 6px;
+    margin-top: 0;
+}

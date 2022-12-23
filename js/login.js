@@ -13,9 +13,9 @@
 //     v1 = document.getElementById("defaultForm-email").value;
 //     //v1 = document.form1.firstname.value;
 //     v2 = document.getElementById("defaultForm-pass").value;
-  
+
 //     $(document).ready(function(){
-  
+
 //     if ((v1 == login_username) && (v2 == login_password))
 //       {
 //         alert('Welcome to our website');
@@ -34,60 +34,122 @@
 //         document.getElementById("pwd").value="";
 //         document.getElementById("pwd").focus();
 //         // parent.frames.Menu_Frame.location.href ="MenuT.htm";
-        
+
 //       }
 //     });	
 //   }
-load();
-function load(){
+
+// cookie
+
+function setCookie(cname, cvalue, exdays) {
+
+    var d = new Date();
+
+    d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+
+    var expires = "expires=" + d.toUTCString();
+
+    document.cookie = cname + "=" + cvalue + "; " + expires;
+
+}
+
+
+
+
+function getCookie(cname) {
+
+    var name = cname + "=";
+
+    var ca = document.cookie.split(';');
+
+    for (var i = 0; i < ca.length; i++) {
+
+        var c = ca[i];
+
+        while (c.charAt(0) == ' ') c = c.substring(1);
+
+        if (c.indexOf(name) == 0) return c.substring(name.length, c.length);
+
+    }
+
+    return "";
+
+}
+function load() {
     //alert("local storage"+localStorage.getItem("all_users"));
-    $(document).ready(function(){
-        if (localStorage.getItem("name") != null){
+    // let cookieVal=getCookie('name');
+    // alert(cookieVal);
+    //alert(document.cookie);
+    $(document).ready(function () {
+        if (localStorage.getItem("name") != null)
+        // if (cookieVal != null && cookieVal!="")
+        {
+            //alert(cookieVal);
             //alert("local storage"+localStorage.getItem("name"));
-            $(".signin-option").hide(); 
-            $(".my-account").show();  
-            
-        } 
-        else{
-            alert("null local storage");
-            $(".signin-option").show(); 
-            $(".my-account").hide(); 
-        }     
-    });	
+            $(".signin-option").hide();
+            $(".my-account").show();
+
+        }
+        else {
+            //alert("null local storage");
+            $(".signin-option").show();
+            $(".my-account").hide();
+        }
+    });
 }
 
-function authenticate_login(){
-var a = new Array();
-up1 = new Object();
-var b;
- 
-up1={
- name:'admin',
- password:btoa('123')
-};
-a.push(up1);
-var username = document.getElementById('defaultForm-email').value;
-var password = document.getElementById('defaultForm-pass').value;
+function authenticate_login() {
+    var a = new Array();
+    up1 = new Object();
 
-//sessionStorage.setItem("currentloggedin",username);
-//localStorage.setItem('all_users',JSON.stringify(a));
+    up1 = {
+        name: 'admin',
+        password: btoa('123')
+    };
+    a.push(up1);
+    var username = document.getElementById('defaultForm-email').value;
+    var password = document.getElementById('defaultForm-pass').value;
 
-//a=JSON.parse((localStorage.getItem("all_users")));
-if(a[0].name == username && atob(a[0].password) == password){
-    a.push({name: username, password: password});
-    localStorage.setItem('name',JSON.stringify(a));
-    for(var i=0; i<a.length; i++)
-      {
-        $(".signin-option").hide();
-        $(".my-account").show(); 
-        document.getElementById("userlogin").innerHTML = a[i]['name'];
-        $("#userlogin").show();
-      }
+    //sessionStorage.setItem("currentloggedin",username);
+    //localStorage.setItem('all_users',JSON.stringify(a));
+
+    //a=JSON.parse((localStorage.getItem("all_users")));
+    if (a[0].name == username && atob(a[0].password) == password) {
+        a.push({ name: username, password: password });
+        localStorage.setItem('name', JSON.stringify(a));
+        //setCookie("name", username, 1 ); // setting cookie
+        for (var i = 0; i < a.length; i++) {
+            $(".signin-option").hide();
+            $(".my-account").show();
+            document.getElementById("userlogin").innerHTML = a[i]['name'];
+            $("#userlogin").show();
+        }
+    }
+    else {
+        alert("Enter only username : admin and Password : 123 ");
+        document.getElementById("defaultForm-email").value = "";
+        document.getElementById("defaultForm-pass").value = "";
+    }
+
 }
-else{
-    alert("Enter only username : admin and Password : 123 ");
+
+function authenticate_logout() {
+    alert('Thank you!');
+    localStorage.removeItem('name');
+    //setCookie('name',"",-1);
+    document.getElementById("defaultForm-email").value = "";
+    document.getElementById("defaultForm-pass").value = "";
+    document.getElementById("defaultForm-email").focus();
+    if (localStorage.getItem("name") == null) {
+        //alert("local storage"+localStorage.getItem("name"));
+        $(".signin-option").show();
+        $(".my-account").hide();
+
+    }
 }
 
-}
+$(document).ready(function(){
 
+load();
 
+});

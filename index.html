@@ -7,38 +7,40 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <!-- Bootstrap CSS -->
-  <link href="css/bootstrap.min.css" rel="stylesheet"/>
-  <link href="css/bootstrap-grid.css" rel="stylesheet" />
+  <link href="css/bootstrap.min.css" rel="stylesheet" />
+  <!-- <link href="css/bootstrap-grid.css" rel="stylesheet" />
   <link href="css/bootstrap-grid.min.css" rel="stylesheet" />
-  <link href="css/bootstrap.css" rel="stylesheet" />
+  <link href="css/bootstrap.css" rel="stylesheet" /> -->
   <link href="css/style.css" rel="stylesheet" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@600;700;800&display=swap" rel="stylesheet">
-
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.css">
+ 
 
   <title>OrgaCart</title>
   <link rel="icon" type="image/x-icon" href="img/favicon.ico">
 </head>
 
 <body>
-  <header class="container">
+  <header class="container-fluid bg-white py-md-3">
     <div class="row header-top d-none d-xl-flex row align-items-center">
-      <div class="col-2 algn-center">
+      <div class="col-2 algn-center me-auto mb-2 mb-lg-0">
         <img src="img/logo3.png" alt="orga cart logo" />
       </div>
 
-      <div class="col-6 algn-center">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="col-4 algn-center">
+        <nav class="navbar navbar-expand-lg navbar-light">
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav">
               <li class="nav-item active">
-                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Vegetables</a>
+                <a class="nav-link" href="veg.html">Vegetables</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Fruits</a>
+                <a class="nav-link" href="fruits.html">Fruits</a>
               </li>
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-bs-toggle="dropdown"
@@ -46,38 +48,56 @@
                   All Category
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                  <a class="dropdown-item" href="#">Vegetables</a>
-                  <a class="dropdown-item" href="#">Fruits</a>
-                  <a class="dropdown-item" href="#">Dairy Products</a>
+                  <a class="dropdown-item" href="veg.html">Vegetables</a>
+                  <a class="dropdown-item" href="fruits.html">Fruits</a>
+                  <a class="dropdown-item" href="dairy.html">Dairy Products</a>
                 </div>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Contact Us</a>
+                <a class="nav-link" href="contact.html">Contact Us</a>
               </li>
             </ul>
           </div>
         </nav>
       </div>
-      <div class="col-4 algn-center" style="justify-content: right;">
-        <ul class="site-action d-none d-lg-flex align-items-center justify-content-between  ml-auto">
+      <div class="col-6 algn-center">
+        <ul class="site-action d-none d-lg-flex align-items-center justify-content-between" style="margin: 0;">
 
           <li class="my-cart"><a href="#"><i class="fas fa-shopping-cart"></i></a></li>
-          <li class="my-account"><a class="dropdown-bs-toggle" href="#" role="button" id="myaccount"
-              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user mr-1"></i><span id="userlogin">My account</span>
-              </a>
+          <li class="my-search">
+            <form class="d-flex">
+              <!-- <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+ -->
+              <div class="dropdown-search position-relative">
+                <input type="search" class="jAuto form-control" placeholder="Search by Category" autocomplete="off">
+                <div class="dropdown-menu">
+                  <i class="hasNoResults">No matching results</i>
+                  <div class="list-autocomplete">
+                    <a class="dropdown-item" href="#fruits">Fruits</a>
+                    <a class="dropdown-item" href="#veg">Vegetables</a>
+                    <a class="dropdown-item" href="#dairy">Dairy Products</a>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </li>
+          <li class="my-account"><a class="btn btn-default btn-rounded dropdown-bs-toggle" href="#" role="button"
+              id="myaccount" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i
+                class="fas fa-user mr-3"></i><span id="userlogin">admin</span>
+            </a>
             <ul class="submenu dropdown-menu" aria-labelledby="myaccount">
               <li><a href="profile.html">Profile</a></li>
-              <li><a href="#">Sign Out</a></li>
+              <li><a href="#" onClick="authenticate_logout()">Sign Out</a></li>
             </ul>
           </li>
           <li class="signin-option"> <a class="btn btn-default btn-rounded" data-bs-toggle="modal"
-              data-bs-target="#modalLoginForm"><i class="fas fa-user mr-2"></i>Sign In</a></li>
+              data-bs-target="#modalLoginForm"><i class="fas fa-user mr-3"></i>Sign In</a></li>
 
         </ul>
       </div>
+
     </div>
   </header>
-
 
   <div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
     aria-hidden="true">
@@ -109,22 +129,24 @@
       </div>
     </div>
   </div>
-
-  <section class="banner-bg d-flex align-items-center">
-    <div class="container-fluid">
-      <div class="row">
-        <div>
-            <img src="img/banner2.png" usemap="#image-map" class="w-100"/>
-            <map name="image-map">
-              <area target="_blank" alt="pulses" title="pulses" href="https://en.wikipedia.org/wiki/Pulse" coords="1701,0,2136,277" shape="rect">
-              <area target="_blank" alt="vegetables" title="vegetables" href="https://en.wikipedia.org/wiki/Vegetable" coords="247,435,424" shape="circle">
-            </map>  
+  <section>
+    <div class="container-fluid gx-0">
+      <div class="row gx-0">
+        <div class="col-12 d-flex position-relative justify-content-center align-items-center ">
+          <img src="img/banner2.png" usemap="#image-map" class="w-100">
+          <map name="image-map">
+            <area target="_blank" alt="pulses" title="pulses" href="https://en.wikipedia.org/wiki/Pulse"
+              coords="1701,0,2136,277" shape="rect">
+            <area target="_blank" alt="vegetables" title="vegetables" href="https://en.wikipedia.org/wiki/Vegetable"
+              coords="247,435,424" shape="circle">
+          </map>
+          <div class="banner-content position-absolute">
+            <h6>Organic and fresh food</h6>
+            <h2>Get freshness delivered <br>on your doorstep.</h2>
+            <a href="#" class="banner-btn">Read More</a>
+          </div>
         </div>
-        <!-- <div class="banner-content">
-          <h6>Organic and fresh food</h6>
-          <h2>Get freshness delivered <br />on your doorstep.</h2>
-          <a href="#" class="banner-btn">Read More</a>
-        </div> -->
+
       </div>
     </div>
   </section>
@@ -170,15 +192,531 @@
       </div>
     </div>
   </section>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <section class="bbb_viewed">
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <div class="bbb_main_container">
+            <div class="bbb_viewed_title_container">
+              <h4 class="bbb_viewed_title">Best selling products</h4>
+              <div class="bbb_viewed_nav_container">
+                <div class="bbb_viewed_nav bbb_viewed_prev"><i class="fas fa-chevron-left"></i></div>
+                <div class="bbb_viewed_nav bbb_viewed_next"><i class="fas fa-chevron-right"></i></div>
+              </div>
+            </div>
+            <div class="bbb_viewed_slider_container">
+              <div class="owl-carousel owl-theme bbb_viewed_slider">
+                <div class="owl-item">
+                  <div class="card p-3">
+                      <div class="text-center">
+                          <img src="img/1.png" width="200">
+                      </div>
+                      <div class="product-details">
+                          <span class="font-weight-bold d-block">$ 7.00</span>
+                          <span>Red Redish</span>
+
+                          <div class="buttons d-flex flex-row">
+                              <div class="cart"><i class="fa fa-shopping-cart"></i></div> <button
+                                  class="btn btn-success cart-button btn-block"><span class="dot">1</span>Add to cart
+                              </button>
+                          </div>
+
+                          <div class="weight">
+                              <small>1 piece 2.5kg</small>
+                          </div>
+                      </div>
+                  </div>
+                </div>
+                <div class="owl-item">
+                  <div class="card p-3">
+                    <div class="text-center">
+                        <img src="img/4.png" width="200">
+                    </div>
+                    <div class="product-details">
+                        <span class="font-weight-bold d-block">$ 7.00</span>
+                        <span>Red Redish</span>
+
+                        <div class="buttons d-flex flex-row">
+                            <div class="cart"><i class="fa fa-shopping-cart"></i></div> <button
+                                class="btn btn-success cart-button btn-block"><span class="dot">1</span>Add to cart
+                            </button>
+                        </div>
+
+                        <div class="weight">
+                            <small>1 piece 2.5kg</small>
+                        </div>
+                    </div>
+                </div>
+                </div>
+                <div class="owl-item">
+                  
+                  <div class="card p-3">
+                    <div class="text-center">
+                        <img src="img/f3.png" width="200">
+                    </div>
+                    <div class="product-details">
+                        <span class="font-weight-bold d-block">$ 7.00</span>
+                        <span>Red Redish</span>
+
+                        <div class="buttons d-flex flex-row">
+                            <div class="cart"><i class="fa fa-shopping-cart"></i></div> <button
+                                class="btn btn-success cart-button btn-block"><span class="dot">1</span>Add to cart
+                            </button>
+                        </div>
+
+                        <div class="weight">
+                            <small>1 piece 2.5kg</small>
+                        </div>
+                    </div>
+                </div>
+                </div>
+                
+                <div class="owl-item">
+                  
+                  <div class="card p-3">
+                    <div class="text-center">
+                        <img src="img/2.png" width="200">
+                    </div>
+                    <div class="product-details">
+                        <span class="font-weight-bold d-block">$ 7.00</span>
+                        <span>Red Redish</span>
+
+                        <div class="buttons d-flex flex-row">
+                            <div class="cart"><i class="fa fa-shopping-cart"></i></div> <button
+                                class="btn btn-success cart-button btn-block"><span class="dot">1</span>Add to cart
+                            </button>
+                        </div>
+
+                        <div class="weight">
+                            <small>1 piece 2.5kg</small>
+                        </div>
+                    </div>
+                </div>
+                </div>
+
+            
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bbb_viewed" style="background-color:#f9f9f9;" id="fruits">
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <div class="bbb_main_container">
+            <div class="bbb_viewed_title_container">
+              <h4 class="bbb_viewed_title">Fruits</h4>
+              <div class="bbb_viewed_nav_container">
+                <div class="bbb_viewed_nav bbb_viewed_prev"><i class="fas fa-chevron-left"></i></div>
+                <div class="bbb_viewed_nav bbb_viewed_next"><i class="fas fa-chevron-right"></i></div>
+              </div>
+            </div>
+            <div class="bbb_viewed_slider_container">
+              <div class="owl-carousel owl-theme bbb_viewed_slider">
+                <div class="owl-item">
+                  <div class="card p-3">
+                      <div class="text-center">
+                          <img src="img/f3.png" width="200">
+                      </div>
+                      <div class="product-details">
+                          <span class="font-weight-bold d-block">$ 7.00</span>
+                          <span>Red Redish</span>
+
+                          <div class="buttons d-flex flex-row">
+                              <div class="cart"><i class="fa fa-shopping-cart"></i></div> <button
+                                  class="btn btn-success cart-button btn-block"><span class="dot">1</span>Add to cart
+                              </button>
+                          </div>
+
+                          <div class="weight">
+                              <small>1 piece 2.5kg</small>
+                          </div>
+                      </div>
+                  </div>
+                </div>
+                <div class="owl-item">
+                  <div class="card p-3">
+                    <div class="text-center">
+                        <img src="img/f1.png" width="200">
+                    </div>
+                    <div class="product-details">
+                        <span class="font-weight-bold d-block">$ 7.00</span>
+                        <span>Red Redish</span>
+
+                        <div class="buttons d-flex flex-row">
+                            <div class="cart"><i class="fa fa-shopping-cart"></i></div> <button
+                                class="btn btn-success cart-button btn-block"><span class="dot">1</span>Add to cart
+                            </button>
+                        </div>
+
+                        <div class="weight">
+                            <small>1 piece 2.5kg</small>
+                        </div>
+                    </div>
+                </div>
+                </div>
+                <div class="owl-item">
+                  
+                  <div class="card p-3">
+                    <div class="text-center">
+                        <img src="img/f2.png" width="200">
+                    </div>
+                    <div class="product-details">
+                        <span class="font-weight-bold d-block">$ 7.00</span>
+                        <span>Red Redish</span>
+
+                        <div class="buttons d-flex flex-row">
+                            <div class="cart"><i class="fa fa-shopping-cart"></i></div> <button
+                                class="btn btn-success cart-button btn-block"><span class="dot">1</span>Add to cart
+                            </button>
+                        </div>
+
+                        <div class="weight">
+                            <small>1 piece 2.5kg</small>
+                        </div>
+                    </div>
+                </div>
+                </div>
+                
+                <div class="owl-item">
+                  
+                  <div class="card p-3">
+                    <div class="text-center">
+                        <img src="img/f4.webp" width="200">
+                    </div>
+                    <div class="product-details">
+                        <span class="font-weight-bold d-block">$ 7.00</span>
+                        <span>Red Redish</span>
+
+                        <div class="buttons d-flex flex-row">
+                            <div class="cart"><i class="fa fa-shopping-cart"></i></div> <button
+                                class="btn btn-success cart-button btn-block"><span class="dot">1</span>Add to cart
+                            </button>
+                        </div>
+
+                        <div class="weight">
+                            <small>1 piece 2.5kg</small>
+                        </div>
+                    </div>
+                </div>
+                </div>
+
+            
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bbb_viewed" id="veg">
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <div class="bbb_main_container">
+            <div class="bbb_viewed_title_container">
+              <h4 class="bbb_viewed_title">Vegetables</h4>
+              <div class="bbb_viewed_nav_container">
+                <div class="bbb_viewed_nav bbb_viewed_prev"><i class="fas fa-chevron-left"></i></div>
+                <div class="bbb_viewed_nav bbb_viewed_next"><i class="fas fa-chevron-right"></i></div>
+              </div>
+            </div>
+            <div class="bbb_viewed_slider_container">
+              <div class="owl-carousel owl-theme bbb_viewed_slider">
+                <div class="owl-item">
+                  <div class="card p-3">
+                      <div class="text-center">
+                          <img src="img/4.png" width="200">
+                      </div>
+                      <div class="product-details">
+                          <span class="font-weight-bold d-block">$ 7.00</span>
+                          <span>Red Redish</span>
+
+                          <div class="buttons d-flex flex-row">
+                              <div class="cart"><i class="fa fa-shopping-cart"></i></div> <button
+                                  class="btn btn-success cart-button btn-block"><span class="dot">1</span>Add to cart
+                              </button>
+                          </div>
+
+                          <div class="weight">
+                              <small>1 piece 2.5kg</small>
+                          </div>
+                      </div>
+                  </div>
+                </div>
+                <div class="owl-item">
+                  <div class="card p-3">
+                    <div class="text-center">
+                        <img src="img/2.png" width="200">
+                    </div>
+                    <div class="product-details">
+                        <span class="font-weight-bold d-block">$ 7.00</span>
+                        <span>Red Redish</span>
+
+                        <div class="buttons d-flex flex-row">
+                            <div class="cart"><i class="fa fa-shopping-cart"></i></div> <button
+                                class="btn btn-success cart-button btn-block"><span class="dot">1</span>Add to cart
+                            </button>
+                        </div>
+
+                        <div class="weight">
+                            <small>1 piece 2.5kg</small>
+                        </div>
+                    </div>
+                </div>
+                </div>
+                <div class="owl-item">
+                  
+                  <div class="card p-3">
+                    <div class="text-center">
+                        <img src="img/1.png" width="200">
+                    </div>
+                    <div class="product-details">
+                        <span class="font-weight-bold d-block">$ 7.00</span>
+                        <span>Red Redish</span>
+
+                        <div class="buttons d-flex flex-row">
+                            <div class="cart"><i class="fa fa-shopping-cart"></i></div> <button
+                                class="btn btn-success cart-button btn-block"><span class="dot">1</span>Add to cart
+                            </button>
+                        </div>
+
+                        <div class="weight">
+                            <small>1 piece 2.5kg</small>
+                        </div>
+                    </div>
+                </div>
+                </div>
+                
+                <div class="owl-item">
+                  
+                  <div class="card p-3">
+                    <div class="text-center">
+                        <img src="img/3.png" width="200">
+                    </div>
+                    <div class="product-details">
+                        <span class="font-weight-bold d-block">$ 7.00</span>
+                        <span>Red Redish</span>
+
+                        <div class="buttons d-flex flex-row">
+                            <div class="cart"><i class="fa fa-shopping-cart"></i></div> <button
+                                class="btn btn-success cart-button btn-block"><span class="dot">1</span>Add to cart
+                            </button>
+                        </div>
+
+                        <div class="weight">
+                            <small>1 piece 2.5kg</small>
+                        </div>
+                    </div>
+                </div>
+                </div>
+
+            
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bbb_viewed" style="background-color:#f9f9f9;" id="dairy">
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <div class="bbb_main_container">
+            <div class="bbb_viewed_title_container">
+              <h4 class="bbb_viewed_title">Dairy Products</h4>
+              <div class="bbb_viewed_nav_container">
+                <div class="bbb_viewed_nav bbb_viewed_prev"><i class="fas fa-chevron-left"></i></div>
+                <div class="bbb_viewed_nav bbb_viewed_next"><i class="fas fa-chevron-right"></i></div>
+              </div>
+            </div>
+            <div class="bbb_viewed_slider_container">
+              <div class="owl-carousel owl-theme bbb_viewed_slider">
+                <div class="owl-item">
+                  <div class="card p-3">
+                      <div class="text-center">
+                          <img src="img/d1.jpeg" width="200">
+                      </div>
+                      <div class="product-details">
+                          <span class="font-weight-bold d-block">$ 7.00</span>
+                          <span>Red Redish</span>
+
+                          <div class="buttons d-flex flex-row">
+                              <div class="cart"><i class="fa fa-shopping-cart"></i></div> <button
+                                  class="btn btn-success cart-button btn-block"><span class="dot">1</span>Add to cart
+                              </button>
+                          </div>
+
+                          <div class="weight">
+                              <small>1 piece 2.5kg</small>
+                          </div>
+                      </div>
+                  </div>
+                </div>
+                <div class="owl-item">
+                  <div class="card p-3">
+                    <div class="text-center">
+                        <img src="img/d3.jpeg" width="200">
+                    </div>
+                    <div class="product-details">
+                        <span class="font-weight-bold d-block">$ 7.00</span>
+                        <span>Red Redish</span>
+
+                        <div class="buttons d-flex flex-row">
+                            <div class="cart"><i class="fa fa-shopping-cart"></i></div> <button
+                                class="btn btn-success cart-button btn-block"><span class="dot">1</span>Add to cart
+                            </button>
+                        </div>
+
+                        <div class="weight">
+                            <small>1 piece 2.5kg</small>
+                        </div>
+                    </div>
+                </div>
+                </div>
+                <div class="owl-item">
+                  
+                  <div class="card p-3">
+                    <div class="text-center">
+                        <img src="img/d2.jpeg" width="200">
+                    </div>
+                    <div class="product-details">
+                        <span class="font-weight-bold d-block">$ 7.00</span>
+                        <span>Red Redish</span>
+
+                        <div class="buttons d-flex flex-row">
+                            <div class="cart"><i class="fa fa-shopping-cart"></i></div> <button
+                                class="btn btn-success cart-button btn-block"><span class="dot">1</span>Add to cart
+                            </button>
+                        </div>
+
+                        <div class="weight">
+                            <small>1 piece 2.5kg</small>
+                        </div>
+                    </div>
+                </div>
+                </div>
+                
+                <div class="owl-item">
+                 
+                  <div class="card p-3">
+                    <div class="text-center">
+                        <img src="img/d4.jpeg" width="200">
+                    </div>
+                    <div class="product-details">
+                        <span class="font-weight-bold d-block">$ 7.00</span>
+                        <span>Red Redish</span>
+
+                        <div class="buttons d-flex flex-row">
+                            <div class="cart"><i class="fa fa-shopping-cart"></i></div> <button
+                                class="btn btn-success cart-button btn-block"><span class="dot">1</span>Add to cart
+                            </button>
+                        </div>
+
+                        <div class="weight">
+                            <small>1 piece 2.5kg</small>
+                        </div>
+                    </div>
+                </div>
+                </div>
+
+            
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="row">
+        <div class="col-sm-6 col-md-4 footer-navigation">
+            <h3><a href="index.html">OrgaCart</a></h3>
+            <p class="links"><a href="index.html">Home</a><strong> &middot; </strong><a href="fruits.html">Fruits</a><strong> &middot; </strong><a href="veg.html">Vegetables</a><strong> &middot; </strong><a href="contact.html">Contact US</a></p>
+            
+        </div>
+        <div class="col-sm-6 col-md-4 footer-contacts">
+            <div><span class="fa fa-map-marker footer-contacts-icon"> </span>
+                <p><span class="new-line-span">298,Menlo Park</span>CA,Montreal</p>
+            </div>
+            <div><i class="fa fa-phone footer-contacts-icon"></i>
+                <p class="footer-center-info email text-left"> +1 514 928 8889</p>
+            </div>
+            <div><i class="fa fa-envelope footer-contacts-icon"></i>
+                <p>support@orgacart.com</p>
+            </div>
+        </div>
+        <div class="col-md-4 footer-about">
+            <h4>About the company <a href="ref.html" style="color: #fff;text-decoration: underline;"><span><i>Know more</i></span></a></h4>
+            <p>Orga cart is website which is for shooping organic products like fresh fruits, vegetables and dairy products on your doorstep.</p>
+            <div class="social-links social-icons"><a href="#"><i class="fab fa-facebook"></i></a><a href="#"><i class="fab fa-twitter"></i></a><a href="#"><i class="fab fa-linkedin"></i></a></div>
+        </div>
+    </div>
+  </footer>
+
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>-->
   <!-- Option 1: Bootstrap Bundle with Popper -->
   <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.1/owl.carousel.js"></script>
+
 
   <!-- Option 2: Separate Popper and Bootstrap JS -->
 
   <!-- <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script> -->
-  <script src="js/login.js"></script>  
+  <script src="js/login.js"></script>
+  <script src="js/search.js"></script>
+
+  <script>
+    $(document).ready(function () {
+      if ($('.bbb_viewed_slider').length) {
+        var viewedSlider = $('.bbb_viewed_slider');
+        viewedSlider.owlCarousel(
+          {
+            loop: true,
+            margin: 30,
+            autoplay: true,
+            autoplayTimeout: 6000,
+            nav: false,
+            dots: false,
+            responsive:
+            {
+              0: { items: 1 },
+              575: { items: 2 },
+              768: { items: 3 },
+              991: { items: 4 },
+              1199: { items: 4 }
+            }
+          });
+
+        if ($('.bbb_viewed_prev').length) {
+          var prev = $('.bbb_viewed_prev');
+          prev.on('click', function () {
+            viewedSlider.trigger('prev.owl.carousel');
+          });
+        }
+
+        if ($('.bbb_viewed_next').length) {
+          var next = $('.bbb_viewed_next');
+          next.on('click', function () {
+            viewedSlider.trigger('next.owl.carousel');
+          });
+        }
+      }
+    });
+  </script>
 </body>
 
 </html>
